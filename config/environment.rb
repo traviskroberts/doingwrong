@@ -11,7 +11,8 @@ Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 
   # Specify gems that this application depends on and have them installed with rake gems:install
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
+  config.gem 'mislav-will_paginate', :version => '~> 2.3.8', :lib => 'will_paginate', :source => 'http://gems.github.com'
+  config.gem 'RedCloth', :version => '~> 4.1.9'
 
   # Skip frameworks you're not going to use.
   config.frameworks -= [ :active_resource ]
@@ -22,5 +23,12 @@ Rails::Initializer.run do |config|
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   config.time_zone = 'UTC'
 end
+
+# ActionMailer Config Settings
+ActionMailer::Base.raise_delivery_errors = false
+ActionMailer::Base.delivery_method = :sendmail
+
+# override terrible form error styles
+ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class=\"fieldWithErrors\">#{html_tag}</span>" }
 
 DOMAIN_NAME = 'thisiswhatyouredoingwrong.com'

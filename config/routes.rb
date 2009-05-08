@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
     m.activate 'activate/:activation_code', :action => 'activate', :activation_code => nil
   end
   
-  map.resources :entries
+  map.resources :entries, :member => { :approve => :get }
   map.resource :session
   map.resources :users
   
