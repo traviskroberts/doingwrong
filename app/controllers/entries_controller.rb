@@ -97,4 +97,32 @@ class EntriesController < ApplicationController
     end
   end
   
+  def vote
+    @entry = Entry.find(params[:id])
+    
+    respond_to do |format|
+      # make sure they are logged in and haven't already voted
+      if logged_in? and !current_user.already_voted(@entry)
+        vote = current_user.votes.build(:entry_id => @entry.id)
+        vote.doing_it_wrong = params[:vote]=='negative'
+        vote.save
+        format.html {
+          flash[:success] = 'Your vote has been counted.'
+          redirect_to entry_path(@entry)
+        }
+        format.js # vote.js.erb
+      else # otherwise, kick them to the curb
+        format.html {
+          flash[:error] = 'You\'re either not logged in or you have already voted for that entry.'
+          redirect_to entry_path(@entry)
+        }
+        format.js {
+          render :update do |page|
+            page.alert 'You\'re either not logged in or you have already voted for that entry.'
+          end
+        }
+      end
+    end
+  end
+  
 end

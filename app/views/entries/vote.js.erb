@@ -1,0 +1,5 @@
+$("#<%= dom_id(@entry) %>_negative_vote_link").html("They're doing it wrong");
+$("#<%= dom_id(@entry) %>_negative_vote_count").html("(<%= @entry.negative_vote_count %>)");
+
+$("#<%= dom_id(@entry) %>_positive_vote_link").html("Not so bad");
+$("#<%= dom_id(@entry) %>_positive_vote_count").html("(<%= @entry.positive_vote_count %>)");

@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     # the existence of an activation code means they have not activated yet
     activation_code.nil?
   end
+  
+  def already_voted(entry)
+    return !self.votes.first(:conditions => ["entry_id = ?", entry.id]).nil?
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

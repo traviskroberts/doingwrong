@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
     m.archives 'archives/:page', :action => 'archives', :requirements => {:page => /\d+/}, :page => nil
   end
   
+  map.vote 'entry/:id/vote/:vote', :controller => 'entries', :action => 'vote'
+  
   map.with_options :controller => 'sessions' do |m|
     m.login 'login', :action => 'new'
     m.logout 'logout', :action => 'destroy'

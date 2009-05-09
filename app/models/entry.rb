@@ -6,4 +6,12 @@ class Entry < ActiveRecord::Base
   default_scope :order => 'updated_at DESC'
   named_scope :approved, :conditions => ["approved = ?", true]
   named_scope :unapproved, :conditions => ["approved = ?", false]
+  
+  def positive_vote_count
+    self.votes.positive.count
+  end
+  
+  def negative_vote_count
+    self.votes.negative.count
+  end
 end
