@@ -1,27 +1,5 @@
-<p><%= link_to 'Add an Entry', new_entry_path %></p>
+<p><%= link_to 'Submit an Entry', new_entry_path %></p>
 
-<%- @entries.each do |entry| -%>
-	<div class="entry">
-		<p><strong>To:</strong> <%= entry.to %></p>
-		<p><strong>This is what you're doing wrong:</strong></p>
-		<%= textilize(entry.message) %>
-		<div class="votes">
-			<p>
-				<span id="<%= dom_id(entry) %>_negative_vote_link">
-					<%= link_to_unless cookies["#{dom_id(entry)}_vote"], 'They\'re doing it wrong', vote_path(:id => entry, :vote => 'negative'), :class => 'remote' %>
-				</span>
-				<span id="<%= dom_id(entry) %>_negative_vote_count">(<%= entry.negative_vote_count %>)</span>
-				&nbsp;|&nbsp;
-				<span id="<%= dom_id(entry) %>_positive_vote_link">
-					<%= link_to_unless cookies["#{dom_id(entry)}_vote"], 'Not so bad', vote_path(:id => entry, :vote => 'positive'), :class => 'remote' %>
-				</span>
-				<span id="<%= dom_id(entry) %>_positive_vote_count">(<%= entry.positive_vote_count %>)</span>
-			</p>
-		</div><!-- votes -->
-		<div class="comments">
-			<p><%= link_to pluralize(entry.comments.count, 'comment'), entry_path(entry) %></p>
-		</div><!-- comments -->
-	</div><!-- entry -->
-<%- end -%>
+<%= render :partial => 'shared/entry', :collection => @entries %>
 
-<p><%= link_to 'Archives', archives_path %></p>
+<p><%= link_to 'Archives', archives_path(:page => 2) %></p>

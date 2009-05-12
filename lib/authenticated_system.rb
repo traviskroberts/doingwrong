@@ -54,7 +54,7 @@ module AuthenticatedSystem
     end
     
     def admin_required
-      @current_user.admin
+      @current_user and @current_user.admin
     end
 
     # Redirect as appropriate when an access request fails.

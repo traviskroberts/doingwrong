@@ -16,4 +16,8 @@ class Entry < ActiveRecord::Base
   def negative_vote_count
     self.votes.negative.count
   end
+  
+  def pretty_date
+    self.created_at.strftime("%B %d, %Y")
+  end
 end

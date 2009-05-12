@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   before_filter :admin_required, :only => [:index, :edit, :update, :destroy]
   
   def index
-    @entries = Entry.paginate(:all, :include => [:comments, :votes], :page => params[:page], :per_page => 15, :order => 'created_at DESC')
+    @entries = Entry.paginate(:all, :include => [:comments, :votes], :page => params[:page], :per_page => 10, :order => 'created_at DESC')
     respond_to do |format|
       format.html
     end
@@ -104,7 +104,6 @@ class EntriesController < ApplicationController
     vote.save
     # set a cookie so they can't vote for this entry again
     cookies["#{dom_id(@entry)}_vote"] = { :value => "Already voted.", :expires => 10.years.from_now}
-    debugger
     respond_to do |format|
       format.html {
         flash[:success] = 'Your vote has been counted.'
