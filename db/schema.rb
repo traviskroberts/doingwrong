@@ -9,18 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090507233124) do
+ActiveRecord::Schema.define(:version => 20090506233840) do
 
   create_table "comments", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "entry_id"
+    t.string   "name"
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "comments", ["entry_id"], :name => "index_comments_on_entry_id"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "entries", :force => true do |t|
     t.integer  "user_id"
@@ -52,13 +51,11 @@ ActiveRecord::Schema.define(:version => 20090507233124) do
 
   create_table "votes", :force => true do |t|
     t.integer  "entry_id"
-    t.integer  "user_id"
     t.boolean  "doing_it_wrong"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "votes", ["entry_id"], :name => "index_votes_on_entry_id"
-  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

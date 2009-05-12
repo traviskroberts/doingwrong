@@ -55,6 +55,12 @@ option{ margin-right:10px;}
 **************************************************/
 .clear { clear:both; }
 
+.entry {
+  padding:0 0 15px 0;
+  margin:0 0 15px 0;
+  border-bottom:1px solid #000;
+}
+
 /************ styles for pagination ************/
 .pagination {
 	font:normal .75em/150% Arial, Verdana, Arial,sans-serif;

@@ -1,9 +1,8 @@
 class EntriesController < ApplicationController
-  # before_filter :login_required
   before_filter :admin_required, :only => [:index, :edit, :update, :destroy]
   
   def index
-    @entries = Entry.paginate(:all, :page => params[:page], :per_page => 15, :order => 'created_at DESC')
+    @entries = Entry.paginate(:all, :include => [:comments, :votes], :page => params[:page], :per_page => 15, :order => 'created_at DESC')
     respond_to do |format|
       format.html
     end
@@ -99,29 +98,19 @@ class EntriesController < ApplicationController
   
   def vote
     @entry = Entry.find(params[:id])
-    
+    # record the vote
+    vote = @entry.votes.new
+    vote.doing_it_wrong = (params[:vote]=='negative' ? 1 : 0)
+    vote.save
+    # set a cookie so they can't vote for this entry again
+    cookies["#{dom_id(@entry)}_vote"] = { :value => "Already voted.", :expires => 10.years.from_now}
+    debugger
     respond_to do |format|
-      # make sure they are logged in and haven't already voted
-      if logged_in? and !current_user.already_voted(@entry)
-        vote = current_user.votes.build(:entry_id => @entry.id)
-        vote.doing_it_wrong = params[:vote]=='negative'
-        vote.save
-        format.html {
-          flash[:success] = 'Your vote has been counted.'
-          redirect_to entry_path(@entry)
-        }
-        format.js # vote.js.erb
-      else # otherwise, kick them to the curb
-        format.html {
-          flash[:error] = 'You\'re either not logged in or you have already voted for that entry.'
-          redirect_to entry_path(@entry)
-        }
-        format.js {
-          render :update do |page|
-            page.alert 'You\'re either not logged in or you have already voted for that entry.'
-          end
-        }
-      end
+      format.html {
+        flash[:success] = 'Your vote has been counted.'
+        redirect_to entry_path(@entry)
+      }
+      format.js # vote.js.erb
     end
   end
   
