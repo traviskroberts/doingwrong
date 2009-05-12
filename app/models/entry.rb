@@ -7,6 +7,8 @@ class Entry < ActiveRecord::Base
   named_scope :approved, :conditions => ["approved = ?", true]
   named_scope :unapproved, :conditions => ["approved = ?", false]
   
+  validates_presence_of :to, :message
+  
   def positive_vote_count
     self.votes.positive.count
   end

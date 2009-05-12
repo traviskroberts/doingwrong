@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_filter :login_required
+  # before_filter :login_required
   before_filter :admin_required, :only => [:index, :edit, :update, :destroy]
   
   def index

@@ -22,6 +22,9 @@
 				<p><%= link_to 'Log in', login_path, { :title => "Log in" } %> to vote.</p>
 			<%- end -%>
 		</div><!-- votes -->
+		<div class="comments">
+			<p><%= link_to pluralize(entry.comments.count, 'comment'), entry_path(entry) %></p>
+		</div><!-- comments -->
 	</div><!-- entry -->
 <%- end -%>
 
