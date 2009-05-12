@@ -11,8 +11,10 @@ Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 
   # Specify gems that this application depends on and have them installed with rake gems:install
-  config.gem 'mislav-will_paginate', :version => '~> 2.3.8', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem 'RedCloth', :version => '~> 4.1.9'
+  config.gem 'mislav-will_paginate', :version => '>=2.3.8', :lib => 'will_paginate', :source => 'http://gems.github.com'
+  config.gem 'RedCloth', :version => '>=4.1.9'
+  config.gem 'populator', :version => '>=0.2.5'
+  config.gem 'faker', :version => '>=0.3.1'
 
   # Skip frameworks you're not going to use.
   config.frameworks -= [ :active_resource ]
