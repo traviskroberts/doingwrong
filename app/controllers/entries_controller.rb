@@ -1,24 +1,31 @@
 class EntriesController < ApplicationController
-  before_filter :admin_required, :only => [:index, :edit, :update, :destroy]
+  before_filter :login_required, :only => [:index, :edit, :update, :destroy, :approve]
   
   def index
     @entries = Entry.paginate(:all, :include => [:comments, :votes], :page => params[:page], :per_page => 10, :order => 'created_at DESC')
     respond_to do |format|
-      format.html
+      format.html # index.html.erb
+    end
+  end
+  
+  def show
+    @entry = Entry.approved.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
     end
   end
   
   def new
     @entry = Entry.new
     respond_to do |format|
-      format.html
+      format.html # new.html.erb
     end
   end
   
   def edit
     @entry = Entry.find(params[:id])
     respond_to do |format|
-      format.html
+      format.html # edit.html.erb
     end
   end
   

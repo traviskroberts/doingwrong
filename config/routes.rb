@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.vote 'entry/:id/vote/:vote', :controller => 'entries', :action => 'vote'
   
+  map.simple_captcha 'simple_captcha/:action', :controller => 'simple_captcha'
+  
   map.with_options :controller => 'sessions' do |m|
     m.login 'login', :action => 'new'
     m.logout 'logout', :action => 'destroy'
@@ -18,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
     m.activate 'activate/:activation_code', :action => 'activate', :activation_code => nil
   end
   
+  map.resources :comments
   map.resources :entries, :member => { :approve => :get }
   map.resource :session
   map.resources :users

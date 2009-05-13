@@ -1,0 +1,45 @@
+<p><%= link_to 'Submit an Entry', new_entry_path %></p>
+
+<%- if !@entry.blank? -%>
+	<p><%= @entry.pretty_date %></p>
+	<p><strong>To:</strong> <%= @entry.to %></p>
+	<p><strong>This is what you're doing wrong:</strong></p>
+	<%= textilize(@entry.message) %>
+	<div class="votes">
+		<p>
+			<span id="<%= dom_id(@entry) %>_negative_vote_link">
+				<%= link_to_unless cookies["#{dom_id(@entry)}_vote"], 'They\'re doing it wrong', vote_path(:id => @entry, :vote => 'negative'), :class => 'remote' %>
+			</span>
+			<span id="<%= dom_id(@entry) %>_negative_vote_count">(<%= @entry.negative_vote_count %>)</span>
+			&nbsp;|&nbsp;
+			<span id="<%= dom_id(@entry) %>_positive_vote_link">
+				<%= link_to_unless cookies["#{dom_id(@entry)}_vote"], 'Not so bad', vote_path(:id => @entry, :vote => 'positive'), :class => 'remote' %>
+			</span>
+			<span id="<%= dom_id(@entry) %>_positive_vote_count">(<%= @entry.positive_vote_count %>)</span>
+		</p>
+	</div><!-- votes -->
+	<div class="comments">
+		<h2>Comments</h2>
+		<%= render :partial => 'comment', :collection => @entry.comments %>
+		
+		<h2>Add Comment</h2>
+		<% remote_form_for :comment, :url => comments_path do |f| %>
+			<p>
+				<%= f.label :name, "Name" %><br />
+				<%= f.text_field :name %>
+			</p>
+			<p>
+				<%= f.label :message, "Comment" %><br />
+				<%= f.text_area :message, :size => '35x5' %>
+			</p>
+			<p>
+				<label for="captcha">Verification</label><br />
+				<%= show_simple_captcha :label => 'Type the letters from the image.' %>
+			</p>
+			<p>
+				<%= f.hidden_field :entry_id, :value => @entry.id %>
+				<%= f.submit "Add Comment" %>
+			</p>
+		<% end %>
+	</div><!-- comments -->
+<%- end -%>
