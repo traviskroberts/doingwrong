@@ -1,8 +1,8 @@
 * { padding:0; margin:0; } /* global definition for padding and margin */
 
-html { height:101%; }
+html { height:101%; background:#40A5EC url('/images/bg_page.gif') fixed repeat-x 0 0; }
 
-body { font-size:100%; height:100%; }
+body { font-size:100%; height:100%; border-top:6px solid #2B8ED3; }
 
 h1, h2, h3, h4, h5 { font:normal 100%/100% "Trebuchet MS", arial, verdana, sans-serif; color:#000; padding:0 0 5px 0; }
 h1 { font-size:1.6em; line-height:100%; }
@@ -36,7 +36,10 @@ option{ margin-right:10px;}
 /**************************************************
 											IDS
 **************************************************/
-#wrapper { width:850px; margin:0 auto; }
+#wrapper { width:875px; padding:0 0 25px 30px; }
+
+#header { padding:35px 0 25px 0; }
+
 
 /************ styles for notice/error divs ************/
 #error, #notice, #success { width:90%; margin:0 auto 10px auto; padding:5px; border:2px solid #DDD; }
@@ -55,10 +58,47 @@ option{ margin-right:10px;}
 **************************************************/
 .clear { clear:both; }
 
-.entry {
-  padding:0 0 15px 0;
-  margin:0 0 15px 0;
-  border-bottom:1px solid #000;
+.entry { margin:0 0 35px 0; }
+
+.to_box {
+  width:802px;
+  padding:0 0 0 70px;
+  margin:0 0 12px 0;
+  background:url('/images/bg_to.png') no-repeat 0 0;
+  font-size:20px;
+  font-weight:bold;
+  line-height:40px;
+  color:#0D5689;
+}
+.to_box .to_label { display:none; }
+
+.message_box {
+  width:811px;
+  background:url('/images/message_box_top.png') no-repeat 0 0;
+  padding:20px 40px 0 20px;
+}
+.message_box p { font-size:15px; color:#0D5689; padding:0; }
+.message_label {
+  background:url('/images/text_doing_wrong.png') no-repeat 0 0;
+  width:436px;
+  padding:27px 0 0 0;
+  margin:0 0 8px 0;
+}
+.message_buttons {
+  width:406px;
+  height:27px;
+  padding:32px 0 0 465px;
+  background:url('/images/message_box_bottom.png') no-repeat 0 0;
+}
+.message_buttons p { float:left; }
+
+.replace {
+  display:block;
+  height:0;
+  overflow:hidden;
+  font-size:0;
+  letter-spacing:-1em;
+  text-indent:-1000em;
 }
 
 /************ styles for pagination ************/
