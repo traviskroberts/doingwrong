@@ -10,6 +10,7 @@ namespace :db do
       entry.to = Populator.words(3..10).capitalize
       entry.message = Populator.sentences(2..5)
       entry.approved = true
+      entry.created_at = 2.months.ago..Time.now
       Comment.populate 0..5 do |comment|
         comment.entry_id = entry.id
         comment.name = Faker::Name.name

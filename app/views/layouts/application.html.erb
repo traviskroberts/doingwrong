@@ -14,13 +14,32 @@
 
 <body>
 	<div id="wrapper">
+		<div class="about_tab">
+			<div class="tab">
+				<div class="tab_inner">
+					<p><%= link_to 'About', '' %></p>
+				</div><!-- tab_inner -->
+			</div><!-- tab -->
+		</div>
+		
 		<div id="header">
 			<%= render(:partial => 'users/user_bar') if logged_in? %>
-			<%# link_to image_tag('logo.png', :size => '850x134', :alt => "This is what you're doing wrong."), home_path %>
-			<%= image_tag('logo.png', :size => '850x134', :alt => "This is what you're doing wrong.") %>
+			<%= link_to image_tag('logo.png', :size => '850x134', :alt => "This is what you're doing wrong."), home_path %>
 		</div><!-- header -->
+		
 		<%= render :partial => 'shared/notice_div' %>
+		
 		<%= yield %>
+		
+		<div id="footer">
+			<p>
+				&copy;<%= Date.today.year %> This is What You're Doing Wrong.
+				Site created by
+				<%= link_to 'Andrew Reifman', 'http://andrewreifman.com', :popup => true %>
+				and
+				<%= link_to 'Travis Roberts', 'http://travisonrails.com', :popup => true %>
+			</p>
+		</div><!-- footer -->
 	</div><!-- wrapper -->
 </body>
 </html>

@@ -1,5 +1,6 @@
+<%- show_admin ||= 'no' -%>
+
 <div class="entry">
-	<p><%= entry.pretty_date %></p>
 	<p class="to_box">
 		<span class="to_label">To:</span>
 		<%=h truncate(entry.to, :length => 80) %>
@@ -9,19 +10,49 @@
 		<p><%=h entry.message %></p>
 	</div><!-- message_box -->
 	<div class="message_buttons">
-		<p>
-			<span id="<%= dom_id(entry) %>_negative_vote_link">
-				<%= link_to_unless cookies["#{dom_id(entry)}_vote"], 'They\'re doing it wrong', vote_path(:id => entry, :vote => 'negative'), :class => 'remote' %>
-			</span>
-			<span id="<%= dom_id(entry) %>_negative_vote_count">(<%= entry.negative_vote_count %>)</span>
-		</p>
-		<p>
-			<span id="<%= dom_id(entry) %>_positive_vote_link">
-				<%= link_to_unless cookies["#{dom_id(entry)}_vote"], 'Not so bad', vote_path(:id => entry, :vote => 'positive'), :class => 'remote' %>
-			</span>
-			<span id="<%= dom_id(entry) %>_positive_vote_count">(<%= entry.positive_vote_count %>)</span>
-		</p>
-		<p><%= link_to pluralize(entry.comments.count, 'comment'), entry_path(entry) %></p>
+		<p class="date"><%= entry.pretty_date %></p>
+		
+		<%- if logged_in? and show_admin=='yes' -%>
+			<div class="button">
+				<p><%= link_to 'Edit', edit_entry_path(entry) %></p>
+			</div><!-- button -->
+			
+			<div class="button">
+				<p><%= link_to 'Delete', entry_path(entry), :method => 'delete' %></p>
+			</div><!-- button -->
+			
+			
+			<%- if !entry.approved -%>
+				<div class="button">
+					<p id="<%= dom_id(entry) %>_approve_link">
+						<%= link_to 'Approve', approve_entry_path(entry), :class => 'remote' %>
+					</p>
+				</div><!-- button -->
+			<%- end -%>
+		<%- else -%>
+			<div class="button">
+				<p>
+					<span id="<%= dom_id(entry) %>_negative_vote_link">
+						<%= link_to_unless cookies["#{dom_id(entry)}_vote"], 'You\'re doing it wrong', vote_path(:id => entry, :vote => 'negative'), :class => 'remote' %>
+					</span>
+					<span id="<%= dom_id(entry) %>_negative_vote_count">(<%= entry.negative_vote_count %>)</span>
+				</p>
+			</div><!-- button -->
+		
+			<div class="button">
+				<p>
+					<span id="<%= dom_id(entry) %>_positive_vote_link">
+						<%= link_to_unless cookies["#{dom_id(entry)}_vote"], 'Not so bad', vote_path(:id => entry, :vote => 'positive'), :class => 'remote' %>
+					</span>
+					<span id="<%= dom_id(entry) %>_positive_vote_count">(<%= entry.positive_vote_count %>)</span>
+				</p>
+			</div><!-- button -->
+		
+			<div class="button">
+				<p><%= link_to pluralize(entry.comments.count, 'comment'), entry_path(entry) %></p>
+			</div><!-- button -->
+		<%- end -%>
+		
 		<div class="clear"></div>
 	</div><!-- message_buttons -->
 </div><!-- entry -->

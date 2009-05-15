@@ -1,25 +1,5 @@
-<h1>Entries</h1>
-
 <%- if !@entries.blank? -%>
-	<%- @entries.each do |entry| -%>
-		<div class="entry">
-			<p><strong>To:</strong> <%= entry.to %></p>
-			<p><strong>This is what you're doing wrong:</strong></p>
-			<%= textilize(entry.message) %>
-			<p class="entry_actions">
-				<%= link_to 'Edit', edit_entry_path(entry) %>
-				&nbsp;|&nbsp;
-				<%= link_to 'Delete', entry_path(entry), :method => 'delete' %>
-				<%- if !entry.approved -%>
-					<span id="<%= dom_id(entry) %>_approve_link">
-						&nbsp;|&nbsp;
-						<%= link_to 'Approve', approve_entry_path(entry), :class => 'remote' %>
-					</span>
-				<%- end -%>
-			</p>
-		</div><!-- entry -->
-	<%- end -%>
-	
+	<%= render :partial => 'shared/entry', :collection => @entries, :locals => { :show_admin => 'yes' } %>
 	<%= will_paginate @entries %>
 <%- else -%>
 	<p>There are no entries at this time.</p>

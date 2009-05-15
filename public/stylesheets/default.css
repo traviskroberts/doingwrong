@@ -1,17 +1,17 @@
 * { padding:0; margin:0; } /* global definition for padding and margin */
 
-html { height:101%; background:#40A5EC url('/images/bg_page.gif') fixed repeat-x 0 0; }
+html { min-height:101%; background:#40A5EC url('/images/bg_footer.gif') repeat-x 0 100%; }
 
-body { font-size:100%; height:100%; border-top:6px solid #2B8ED3; }
+body { font-size:100%; border-top:6px solid #3B9DDA; background:url('/images/bg_page.gif') fixed repeat-x 0 0; }
 
-h1, h2, h3, h4, h5 { font:normal 100%/100% "Trebuchet MS", arial, verdana, sans-serif; color:#000; padding:0 0 5px 0; }
+h1, h2, h3, h4, h5 { font:normal 100%/100% helvetica, arial, sans-serif; color:#000; padding:0 0 5px 0; }
 h1 { font-size:1.6em; line-height:100%; }
 h2 { font-size:1.4em; line-height:100%; }
 h3 { font-size:1.2em; line-height:100%; }
 h4 { font-size:1.0em; line-height:100%; }
 h5 { font-size:0.9em; line-height:100%; }
 
-p, ol, ul, table, dl, div.formatted { font:normal 14px/150% "Trebuchet MS", arial, verdana, sans-serif; padding:0 0 10px 0; }
+p, ol, ul, table, dl, div.formatted { font:normal 14px/150% helvetica, arial, sans-serif; padding:0 0 10px 0; }
 
 a, a:visited { color:#369; outline:none; /*removes dotted outline around links in FF*/ }
 a:hover { color:#369; text-decoration:none; }
@@ -36,10 +36,14 @@ option{ margin-right:10px;}
 /**************************************************
 											IDS
 **************************************************/
-#wrapper { width:875px; padding:0 0 25px 30px; }
+#wrapper { width:875px; padding:0 0 0 30px; position:relative; }
 
-#header { padding:35px 0 25px 0; }
+#header { padding:45px 0 15px 0; }
+#header img { display:block; }
 
+#footer { padding:0 0 15px 0; margin:50px 0 0 0; }
+#footer p { padding:0; font-size:12px; text-align:center; color:#121338; }
+#footer p a, #footer p a:visited { color:#121338; }
 
 /************ styles for notice/error divs ************/
 #error, #notice, #success { width:90%; margin:0 auto 10px auto; padding:5px; border:2px solid #DDD; }
@@ -58,7 +62,24 @@ option{ margin-right:10px;}
 **************************************************/
 .clear { clear:both; }
 
-.entry { margin:0 0 35px 0; }
+.tab { padding:0 0 0 25px; background:url('/images/tab_left.png') no-repeat 0 0; }
+.tab_inner { background:url('/images/tab_right.png') no-repeat 100% 0; }
+
+.about_tab { position:absolute; top:0; right:0; }
+.about_tab p { font-size:18px; font-weight:bold; line-height:30px; }
+.about_tab a, .about_tab a:visited {
+  display:block;
+  padding:0 43px 0 0;
+  text-decoration:none;
+  color:#FFF;
+  background:url('/images/arrow_down.png') no-repeat 60px 0;
+}
+
+.user_bar { position:absolute; top:0; left:30px; }
+.user_bar p { padding:0 25px 0 0; line-height:30px; font-weight:bold; color:#FFF; }
+.user_bar a, .user_bar a:visited { color:#FFF; }
+
+.entry { margin:0 0 50px 0; }
 
 .to_box {
   width:802px;
@@ -85,12 +106,36 @@ option{ margin-right:10px;}
   margin:0 0 8px 0;
 }
 .message_buttons {
-  width:406px;
+  width:816px;
   height:27px;
-  padding:32px 0 0 465px;
+  padding:32px 0 0 55px;
   background:url('/images/message_box_bottom.png') no-repeat 0 0;
 }
-.message_buttons p { float:left; }
+.message_buttons .button {
+  float:left;
+  margin:0 6px 0 0;
+  padding:0 0 0 11px;
+  background:url('/images/btn_left.png') no-repeat 0 0;
+}
+.message_buttons .button p {
+  line-height:25px;
+  background:url('/images/btn_right.png') no-repeat 100% 0;
+  padding:0 12px 0 0;
+  font-size:13px;
+  color:#0D5689;
+}
+.message_buttons .btn_inner { line-height:25px; }
+.message_buttons a, .message_buttons a:visited { text-decoration:none; color:#0D5689; }
+.message_buttons p.date {
+  width:200px;
+  float:left;
+  padding:0;
+  margin:0 210px 0 0;
+  color:#0D5689;
+  font-weight:bold;
+  text-shadow:1px 1px 2px #FFF;
+  background-image:none;
+}
 
 .replace {
   display:block;
@@ -111,24 +156,24 @@ option{ margin-right:10px;}
 .pagination a {
 	padding:2px 5px 2px 5px;
 	margin:2px;
-	border:1px solid #666;
+	border:1px solid #0D5689;
 	text-decoration:none;
-	color:#666;
+	color:#0D5689;
 	font-size:1.0em !important;
 }
-.pagination a:hover, .pagination a:active { border:1px solid #000; color:#000; }
+.pagination a:hover, .pagination a:active { border:1px solid #121338; color:#121338; }
 .pagination span.current {
 	padding:2px 5px 2px 5px;
 	margin:2px;
-	border:1px solid #666;
+	border:1px solid #0D5689;
 	font-weight:bold;
-	background-color:#666;
+	background-color:#0D5689;
 	color:#FFF;
 }
 .pagination span.disabled {
 	padding:2px 5px 2px 5px;
 	margin:2px;
-	border:1px solid #DDD;
-	color:#999;
+	border:1px solid #277EB8;
+	color:#277EB8;
 }
 /************************/
