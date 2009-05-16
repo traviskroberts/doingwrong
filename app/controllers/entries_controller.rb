@@ -89,6 +89,9 @@ class EntriesController < ApplicationController
   def approve
     @entry = Entry.find(params[:id])
     @entry.update_attribute(:approved, true)
+    # auto-post this to Twitter
+    twitter = Tweet.new
+    twitter.post_update(@entry)
     respond_to do |format|
       format.html {
         flash[:success] = 'Entry approved!'
