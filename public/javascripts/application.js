@@ -6,4 +6,9 @@ $(document).ready(function() {
      $.get(this.href, null, null, "script");
      return false;
    });
- });
+   
+   $('a.remote-delete').click(function() {
+     $.post(this.href, { _method: 'delete' }, null, "script");
+     return false;
+   });
+});

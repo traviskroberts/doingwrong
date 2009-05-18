@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include SimpleCaptcha::ControllerHelpers
   helper :all
-  protect_from_forgery
+  # protect_from_forgery
   
   protected
   def rescue_action_in_public(ex) 

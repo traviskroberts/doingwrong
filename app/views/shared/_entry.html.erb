@@ -1,6 +1,6 @@
 <%- show_admin ||= 'no' -%>
 
-<div class="entry">
+<div class="entry" id="<%= dom_id(entry) %>">
 	<p class="to_box">
 		<span class="to_label">To:</span>
 		<%=h truncate(entry.to, :length => 80) %>
@@ -18,9 +18,8 @@
 			</div><!-- button -->
 			
 			<div class="button">
-				<p><%= link_to 'Delete', entry_path(entry), :method => 'delete' %></p>
+				<p><%= link_to 'Delete', entry_path(entry), :class => 'remote-delete' %></p>
 			</div><!-- button -->
-			
 			
 			<%- if !entry.approved -%>
 				<div class="button">
@@ -49,7 +48,7 @@
 			</div><!-- button -->
 		
 			<div class="button">
-				<p><%= link_to pluralize(entry.comments.count, 'comment'), entry_path(entry) %></p>
+				<p id="comment_count"><%= link_to pluralize(entry.comments.count, 'comment'), entry_path(entry) %></p>
 			</div><!-- button -->
 		<%- end -%>
 		
