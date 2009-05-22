@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the entry submit page/
       new_entry_path
+    when /the entry details page/
+      entry_path(1)
     
     # Add more mappings here.
     # Here is a more fancy example:

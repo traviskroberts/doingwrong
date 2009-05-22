@@ -15,3 +15,7 @@ end
 
 require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
+
+# set up factory girl
+require 'factory_girl'
+require "#{RAILS_ROOT}/test/factories.rb"

@@ -6,7 +6,7 @@ Feature: Add Entry
 	Scenario: Submit a valid entry
 		Given I am on the homepage
 		And I have no entries
-		When I follow "Add an Entry"
+		When I follow "Submit an Entry"
 		And I fill in "To" with "Guy at the gym"
 		And I fill in "This is what they're doing wrong" with "You make a lot of noise when you work out"
 		And I press "Submit"
@@ -16,7 +16,7 @@ Feature: Add Entry
 	Scenario: Submit an invalid entry (no fields supplied)
 		Given I am on the homepage
 		And I have no entries
-		When I follow "Add an Entry"
+		When I follow "Submit an Entry"
 		And I press "Submit"
 		Then I should see "Your submission could not be saved."
 		And I should see "To can't be blank"
@@ -25,7 +25,7 @@ Feature: Add Entry
 	Scenario: Submit an invalid entry (no to supplied)
 		Given I am on the homepage
 		And I have no entries
-		When I follow "Add an Entry"
+		When I follow "Submit an Entry"
 		And I fill in "This is what they're doing wrong" with "You make a lot of noise when you work out"
 		And I press "Submit"
 		Then I should see "Your submission could not be saved."
@@ -34,7 +34,7 @@ Feature: Add Entry
 	Scenario: Submit an invalid entry (no message supplied)
 		Given I am on the homepage
 		And I have no entries
-		When I follow "Add an Entry"
+		When I follow "Submit an Entry"
 		And I fill in "To" with "Guy at the gym"
 		And I press "Submit"
 		Then I should see "Your submission could not be saved."
