@@ -53,10 +53,13 @@ set :deploy_via, :remote_cache
 
 # action to symlink database file
 namespace :deploy do
-  desc "Symlink database config file."
-  task :symlink_db do
+  desc "Symlink database config file and copies restful authentication files."
+  task :prepare do
+    # symlink the db
     run "ln -nfs #{shared_path}/system/database.yml #{release_path}/config/database.yml"
+    # copy restful_authentication files
+    run "cp -r #{shared_path}/system/restful_authentication/* #{release_path}/vendor/plugins/restful_authentication/"
   end
 end
  
-after 'deploy:update_code', 'deploy:symlink_db'
+after 'deploy:update_code', 'deploy:prepare'
