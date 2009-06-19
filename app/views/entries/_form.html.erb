@@ -1,10 +1,10 @@
 <%= f.error_messages %>
 
-<p>
-	<%= f.label :to, 'To' %><br />
+<p class="to">
+	<%= f.label :to, 'To' %>
 	<%= f.text_field :to %>
 </p>
-<p>
-	<%= f.label :message, "This is what they're doing wrong" %><br />
-	<%= f.text_area :message, :size => '50x10' %>
+<p class="message">
+	<%= f.label :message, "This is what you're doing wrong..." %><br />
+	<%= f.text_area :message, :size => '50x4' %>
 </p>

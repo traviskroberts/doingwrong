@@ -11,4 +11,10 @@ $(document).ready(function() {
      $.post(this.href, { _method: 'delete' }, null, "script");
      return false;
    });
+
+	$("#submit_link").click(function(){
+	  $("#submit_form_holder").slideToggle("slow");
+		return false;
+	});
+
 });

@@ -13,11 +13,29 @@
 </head>
 
 <body>
+  <div id="submit_form_holder" style="display:none;">
+    <div id="submit_form">
+      <% form_for :entry do |f| -%>
+      	<%= render :partial => 'entries/form', :locals => {:f => f} %>
+      	<p class="submit_btn"><%= image_submit_tag 'btn_submit.png' %></p>
+      <% end -%>
+      <div class="clear"></div>
+    </div><!-- submit_form -->
+  </div><!-- submit_form_holder -->
+  
 	<div id="wrapper">
-		<div class="about_tab">
+		<div class="tab_holder">
 			<div class="tab">
 				<div class="tab_inner">
 					<p><%= link_to 'About', '' %></p>
+				</div><!-- tab_inner -->
+			</div><!-- tab -->
+		</div>
+		
+		<div class="tab_holder">
+			<div class="tab">
+				<div class="tab_inner">
+					<p><%= link_to 'Submit', new_entry_path, :id => 'submit_link' %></p>
 				</div><!-- tab_inner -->
 			</div><!-- tab -->
 		</div>

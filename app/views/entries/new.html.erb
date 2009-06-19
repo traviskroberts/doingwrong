@@ -1,4 +1,9 @@
-<% form_for @entry do |f| -%>
-	<%= render :partial => 'form', :locals => {:f => f} %>
-	<p><%= f.submit "Submit" %></p>
-<% end -%>
+<h1>Submit an Entry</h1>
+
+<div id="submit_form" style="padding-left:0;">
+  <% form_for :entry do |f| -%>
+  	<%= render :partial => 'entries/form', :locals => {:f => f} %>
+  	<p class="submit_btn"><%= image_submit_tag 'btn_submit.png' %></p>
+  <% end -%>
+  <div class="clear"></div>
+</div><!-- submit_form -->
