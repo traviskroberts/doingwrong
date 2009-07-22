@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
           format.js # RJS template
         else
           @error = 'save'
+          logger.warn(@comment.errors.to_a)
           format.html {
             flash[:error] = "You must provide your name and a comment."
             redirect_to entry_path(entry)

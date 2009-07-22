@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090513005423) do
+ActiveRecord::Schema.define(:version => 20090722024159) do
 
   create_table "comments", :force => true do |t|
     t.integer  "entry_id"
@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(:version => 20090513005423) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.string   "website"
   end
 
   add_index "comments", ["entry_id"], :name => "index_comments_on_entry_id"

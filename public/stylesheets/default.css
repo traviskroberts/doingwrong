@@ -62,6 +62,63 @@ option{ margin-right:10px;}
 }
 #submit_form .submit_btn { float:right; display:inline; margin-right:40px; }
 
+#comment_form_holder {
+  width:870px;
+  background:url('/images/comment_box_top.png') no-repeat 0 0;
+  padding:10px 0 0 0;
+}
+
+#comment_form {
+  background:url('/images/comment_box_bottom.png') no-repeat 0 100%;
+  padding:10px 15px 15px 15px;
+}
+
+#comment_form label {
+  font-size:20px;
+  font-weight:bold;
+  color:#FFF;
+}
+
+#comment_form label .small {
+  font-size:12px;
+  font-weight:normal;
+  color:#CCC;
+}
+
+#comment_form #comment_name, #comment_form #captcha, #comment_form #comment_email, #comment_form #comment_website {
+  width:420px;
+  font-size:18px;
+  line-height:100%;
+  padding:5px 10px;
+  border:none;
+  background:url('/images/bg_comment_name.gif') no-repeat 0 0;
+  margin:0 0 5px 0;
+}
+
+#comment_form #comment_message {
+  width:835px;
+  height:46px;
+  padding:5px 0 5px 10px;
+  border:none;
+  background:url('/images/bg_comment_message.gif') no-repeat 0 0;
+  font-size:14px;
+  margin:0 0 5px 0;
+}
+
+#comment_form #submit_button {
+  float:left;
+  margin-right:10px;
+  padding:0;
+}
+
+#comment_notice p {
+  padding:5px 10px;
+  border:2px solid #FBC2C4;
+  background-color:#FBE3E4;
+  color:#8A1F11;
+  margin:0 0 5px 0;
+}
+
 #footer { padding:0 0 15px 0; margin:50px 0 0 0; }
 #footer p { padding:0; font-size:12px; text-align:center; color:#121338; }
 #footer p a, #footer p a:visited { color:#121338; }
@@ -113,6 +170,43 @@ option{ margin-right:10px;}
 }
 .to_box .to_label { display:none; }
 
+.comment {
+  margin:0 0 25px 0;
+  border-top:2px solid #70BCF1;
+}
+
+.comment .gravatar {
+  border-left:2px solid #70BCF1;
+  border-bottom:2px solid #70BCF1;
+  padding:5px;
+  float:left;
+  margin-right:10px;
+}
+
+.comment .comment_content {
+  float:left;
+}
+
+.comment_content .name {
+  padding:5px 0 0 0;
+  color:#FFF;
+  font-weight:bold;
+}
+
+.comment_content .name a, .comment_content .name a:visited {
+  color:#FFF;
+}
+
+.comment_content .date {
+  font-size:12px;
+  color:#0D5689;
+  padding:0 0 10px 0;
+}
+
+.comment_content .comment_message {
+  color:#FFF;
+}
+
 .message_box {
   width:811px;
   background:url('/images/message_box_top.png') no-repeat 0 0;
@@ -155,6 +249,19 @@ option{ margin-right:10px;}
   font-weight:bold;
   text-shadow:1px 1px 2px #FFF;
   background-image:none;
+}
+
+.comments h2 {
+  font-size:26px;
+  padding:0 0 5px 0;
+  margin:0 0 10px 0;
+}
+
+.comment_author {
+  width:816px;
+  height:27px;
+  padding:25px 0 0 55px;
+  background:url('/images/message_box_bottom.png') no-repeat 0 0;
 }
 
 .replace {

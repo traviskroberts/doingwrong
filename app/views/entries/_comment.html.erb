@@ -1,4 +1,9 @@
 <div class="comment">
-	<p><%=h comment.name %></p>
-	<%= simple_format(strip_tags(comment.message)) %>
+    <%= image_tag("http://www.gravatar.com/avatar/#{comment.email}?s=50", :alt => '?', :class => 'gravatar') %>
+    <div class="comment_content">
+        <p class="name"><%= comment.website.blank? ? h(comment.name) : link_to(h(comment.name), comment.website, :popup => true) %></p>
+        <p class="date"><%= comment.created_at.strftime("%B %d, %Y") %></p>
+        <span class="comment_message"><%= simple_format(strip_tags(comment.message)) %></span>
+    </div><!-- comment_content -->
+    <div class="clear"></div>
 </div><!-- comment -->

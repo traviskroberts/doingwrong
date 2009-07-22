@@ -1,32 +1,45 @@
-<p><%= link_to 'Submit an Entry', new_entry_path %></p>
-
 <%- if !@entry.blank? -%>
 	<%= render :partial => 'shared/entry', :object => @entry %>
 	
 	<div class="comments">
 		<h2>Comments</h2>
 		<div id="comments">
-			<%= render :partial => 'comment', :collection => @entry.comments %>
+		    <%= render :partial => 'comment', :collection => @entry.comments %>
 		</div>
 		
-		<h2>Add Comment</h2>
 		<div id="comment_notice"></div>
-		<% remote_form_for :comment, :url => comments_path, :html => {:id => 'comment_form'} do |f| %>
-			<p>
-				<%= f.label :name, "Name" %><br />
-				<%= f.text_field :name %>
-			</p>
-			<p>
-				<%= f.label :message, "Comment" %><br />
-				<%= f.text_area :message, :size => '35x5' %>
-			</p>
-			<span id="simple_captcha_container">
-				<%= render :partial => 'shared/simple_captcha' %>
-			</span>
-			<p>
-				<%= f.hidden_field :entry_id, :value => @entry.id %>
-				<%= f.submit "Add Comment" %>
-			</p>
-		<% end %>
+		<div id="comment_form_holder">
+		    <% remote_form_for  :comment,
+		                        :url => comments_path,
+		                        :loading => '$("#comment_busy").show();',
+		                        :complete => '$("#comment_busy").hide();',
+		                        :html => {:id => 'comment_form'} do |f| %>
+    			<p>
+    				<%= f.label :name, 'Name <span class="small">(required)</span>' %><br />
+    				<%= f.text_field :name %>
+    			</p>
+    			<p>
+    				<%= f.label :email, 'Email <span class="small">(required - will not be published)</span>' %><br />
+    				<%= f.text_field :email %>
+    			</p>
+    			<p>
+    				<%= f.label :website, "Website" %><br />
+    				<%= f.text_field :website %>
+    			</p>
+    			<p>
+    				<%= f.label :message, 'Comment <span class="small">(required)</span>' %><br />
+    				<%= f.text_area :message, :size => '35x5' %>
+    			</p>
+    			<span id="simple_captcha_container">
+    				<%= render :partial => 'shared/simple_captcha' %>
+    			</span>
+    			<p id="submit_button">
+    				<%= f.hidden_field :entry_id, :value => @entry.id %>
+    				<%= image_submit_tag 'btn_add_comment.gif', :alt => "Add Comment" %>
+    			</p>
+    			<span id="comment_busy" style="display:none;"><%= image_tag 'comment_busy.gif', :alt => 'Please Wait...' %></span>
+    			<div class="clear"></div>
+    		<% end %>
+		</div><!-- comment_form_holder -->
 	</div><!-- comments -->
 <%- end -%>

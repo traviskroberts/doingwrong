@@ -1,5 +1,5 @@
 <%- if @error == 'save' -%>
-	$("#comment_notice").html("<p>There was an error saving the comment.</p>");
+	$("#comment_notice").html("<p>There was an error saving the comment. Please provide your name, email and comment.</p>");
 <%- elsif @error == 'captcha' -%>
 	$("#comment_notice").html("<p>You must type in the code from the image.</p>");
 <%- else -%>
@@ -10,9 +10,13 @@
 	$("#comment_count").html("<%= escape_javascript(link_to(pluralize(@comment.entry.comments.count, 'comment'), entry_path(@comment.entry))) %>")
 	
 	<!-- reset the form fields -->
-	$("#comment_name").val("");
-	$("#comment_message").val("");
+	$("#comment_form").each(function(){
+	    this.reset();
+	});
 	
-	<!-- replace the captcha -->
-	$("#simple_captcha_container").html("<%= escape_javascript(render(:partial => 'shared/simple_captcha')) %>")
+    <!-- clear the comment error if there is one -->
+    $("#comment_notice").html("");
 <%- end -%>
+
+<!-- replace the captcha -->
+$("#simple_captcha_container").html("<%= escape_javascript(render(:partial => 'shared/simple_captcha')) %>")
