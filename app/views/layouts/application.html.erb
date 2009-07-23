@@ -15,9 +15,13 @@
 <body>
   <div id="submit_form_holder" style="display:none;">
     <div id="submit_form">
-      <% form_for :entry do |f| -%>
+      <div id="new_entry_errors"></div>
+      <% remote_form_for :entry, :url => entries_path, :loading => '$("#entry_submit_busy").show();' do |f| -%>
       	<%= render :partial => 'entries/form', :locals => {:f => f} %>
-      	<p class="submit_btn"><%= image_submit_tag 'btn_submit.png' %></p>
+      	<p class="submit_btn">
+      	  <span id="entry_submit_busy" style="display:none;"><%= image_tag "comment_busy.gif", :alt => 'Please wait...' %></span>
+      	  <%= image_submit_tag 'btn_submit.png' %>
+      	</p>
       <% end -%>
       <div class="clear"></div>
     </div><!-- submit_form -->

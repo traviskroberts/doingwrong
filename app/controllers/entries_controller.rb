@@ -34,15 +34,19 @@ class EntriesController < ApplicationController
     @entry.user = @current_user
     respond_to do |format|
       if @entry.save
+        SiteMailer.deliver_entry_submission(@entry)
         format.html {
           flash[:success] = 'Your submission has been received and will be reviewed shortly.'
           redirect_to home_path
         }
+        format.js # create.js.erb
       else
+        @error = true
         format.html {
           flash.now[:error] = 'Your submission could not be saved.'
           render :action => 'new'
         }
+        format.js # create.js.erb
       end
     end
   end

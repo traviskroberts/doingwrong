@@ -2,9 +2,9 @@
 
 <p class="to">
 	<%= f.label :to, 'To' %>
-	<%= f.text_field :to %>
+	<%= f.text_field :to, :value => '' %>
 </p>
 <p class="message">
 	<%= f.label :message, "This is what you're doing wrong..." %><br />
-	<%= f.text_area :message, :size => '50x4' %>
+	<%= f.text_area :message, :size => '50x4', :value => '' %>
 </p>

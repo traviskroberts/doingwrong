@@ -1,5 +1,3 @@
-<p><%= link_to 'Submit an Entry', new_entry_path %></p>
-
 <%= render :partial => 'shared/entry', :collection => @entries %>
 
 <%= will_paginate @entries %>
