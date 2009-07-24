@@ -3,6 +3,9 @@
 
 $(document).ready(function() {
    $('a.remote').click(function() {
+     if(this.rel) {
+        $("#" + this.rel).show();
+       }
      $.get(this.href, null, null, "script");
      return false;
    });

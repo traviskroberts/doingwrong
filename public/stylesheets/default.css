@@ -238,13 +238,14 @@ option{ margin-right:10px;}
   font-size:13px;
   color:#0D5689;
 }
+.message_buttons .busy { width:20px; padding:4px 0 0 0; float:left; }
 .message_buttons .btn_inner { line-height:25px; }
 .message_buttons a, .message_buttons a:visited { text-decoration:none; color:#0D5689; }
 .message_buttons p.date {
   width:200px;
   float:left;
   padding:0;
-  margin:0 210px 0 0;
+  margin:0 190px 0 0;
   color:#0D5689;
   font-weight:bold;
   text-shadow:1px 1px 2px #FFF;

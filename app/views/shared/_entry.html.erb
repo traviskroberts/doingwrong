@@ -12,6 +12,10 @@
 	<div class="message_buttons">
 		<p class="date"><%= entry.pretty_date %></p>
 		
+		<div class="busy">
+		  <span id="<%= dom_id(entry) %>_vote_busy" style="display:none;"><%= image_tag 'busy_sm.gif', :alt => 'loading...' %></span>
+		</div><!-- busy -->
+		
 		<%- if logged_in? and show_admin=='yes' -%>
 			<div class="button">
 				<p><%= link_to 'Edit', edit_entry_path(entry) %></p>
@@ -32,7 +36,11 @@
 			<div class="button">
 				<p>
 					<span id="<%= dom_id(entry) %>_negative_vote_link">
-						<%= link_to_unless cookies["#{dom_id(entry)}_vote"], 'You\'re doing it wrong', vote_path(:id => entry, :vote => 'negative'), :class => 'remote' %>
+						<%= link_to_unless cookies["#{dom_id(entry)}_vote"],
+						                    "You're doing it wrong",
+						                    vote_path(:id => entry, :vote => 'negative'),
+						                    :rel => "#{dom_id(entry)}_vote_busy",
+						                    :class => 'remote' %>
 					</span>
 					<span id="<%= dom_id(entry) %>_negative_vote_count">(<%= entry.negative_vote_count %>)</span>
 				</p>
