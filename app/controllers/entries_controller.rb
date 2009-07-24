@@ -121,7 +121,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html {
         flash[:success] = 'Your vote has been counted.'
-        redirect_to entry_path(@entry)
+        redirect_to entry_details_path(:id => @entry, :slug => @entry.slug)
       }
       format.js # vote.js.erb
     end

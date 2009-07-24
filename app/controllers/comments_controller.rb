@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
           # ContactMailer.deliver_comment(@comment)
           format.html {
             flash[:success] = 'Your comment has been added.'
-            redirect_to entry_path(entry)
+            redirect_to entry_details_path(:id => entry, :slug => entry.slug)
           }
           format.js # RJS template
         else
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
           logger.warn(@comment.errors.to_a)
           format.html {
             flash[:error] = "You must provide your name and a comment."
-            redirect_to entry_path(entry)
+            redirect_to entry_details_path(:id => entry, :slug => entry.slug)
           }
           format.js # RJS template
         end
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
         @error = 'captcha'
         format.html {
           flash[:error] = 'You must enter the correct verification code.'
-          redirect_to entry_path(entry)
+          redirect_to entry_details_path(:id => entry, :slug => entry.slug)
         }
         format.js # RJS template
       end

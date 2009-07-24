@@ -7,6 +7,8 @@ class Entry < ActiveRecord::Base
   named_scope :approved, :conditions => ["approved = ?", true]
   named_scope :unapproved, :conditions => ["approved = ?", false]
   
+  before_save :create_slug
+  
   validates_presence_of :to, :message
   
   def positive_vote_count
@@ -20,4 +22,9 @@ class Entry < ActiveRecord::Base
   def pretty_date
     self.created_at.strftime("%B %d, %Y")
   end
+  
+  protected
+    def create_slug
+      self.slug = 'to-' + self.to.gsub(/\s+/,'-').gsub(/[^a-z0-9\-]+/i, '').gsub(/[\-]+/,'-').downcase
+    end
 end

@@ -7,7 +7,7 @@
 	$("#comments").append("<%= escape_javascript(render(:partial => 'entries/comment', :object => @comment)) %>");
 	
 	<!-- update the comment count -->
-	$("#comment_count").html("<%= escape_javascript(link_to(pluralize(@comment.entry.comments.count, 'comment'), entry_path(@comment.entry))) %>")
+	$("#comment_count").html("<%= escape_javascript(link_to(pluralize(@comment.entry.comments.count, 'comment'), entry_details_path(:id => @comment.entry, :slug => @comment.entry.slu))) %>")
 	
 	<!-- reset the form fields -->
 	$("#comment_form").each(function(){

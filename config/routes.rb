@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
     m.archives 'archives/:page', :action => 'archives', :requirements => {:page => /\d+/}, :page => nil
   end
   
+  map.entry_details 'entry/:id/:slug', :controller => 'entries', :action => 'show'
   map.vote 'entry/:id/vote/:vote', :controller => 'entries', :action => 'vote'
   
   map.simple_captcha 'simple_captcha/:action', :controller => 'simple_captcha'

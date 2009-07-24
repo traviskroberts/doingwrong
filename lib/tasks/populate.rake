@@ -8,6 +8,7 @@ namespace :db do
     
     Entry.populate 25 do |entry|
       entry.to = Populator.words(3..10).capitalize
+      entry.slug = 'to-' + entry.to.gsub(/\s+/,'-').gsub(/[^a-z0-9\-]+/i, '').gsub(/[\-]+/,'-').downcase
       entry.message = Populator.sentences(2..5)
       entry.approved = true
       entry.created_at = 2.months.ago..Time.now

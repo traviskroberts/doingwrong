@@ -3,7 +3,7 @@
 <div class="entry" id="<%= dom_id(entry) %>">
 	<p class="to_box">
 		<span class="to_label">To:</span>
-		<%=h truncate(entry.to, :length => 80) %>
+		<%= link_to h(truncate(entry.to, :length => 80)), entry_details_path(:id => entry, :slug => entry.slug) %>
 	</p>
 	<div class="message_box">
 		<h2 class="message_label replace">This is what you're doing wrong...</h2>
@@ -56,7 +56,9 @@
 			</div><!-- button -->
 		
 			<div class="button">
-				<p id="comment_count"><%= link_to pluralize(entry.comments.count, 'comment'), entry_path(entry) %></p>
+				<p id="comment_count">
+				  <%= link_to pluralize(entry.comments.count, 'comment'), entry_details_path(:id => entry, :slug => entry.slug) + '#comments' %>
+				</p>
 			</div><!-- button -->
 		<%- end -%>
 		

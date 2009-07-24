@@ -156,6 +156,10 @@ option{ margin-right:10px;}
 .user_bar p { padding:0 25px 0 0; line-height:30px; font-weight:bold; color:#FFF; }
 .user_bar a, .user_bar a:visited { color:#FFF; }
 
+.archive_link { font-size:20px; text-align:right; }
+.archive_link a, .archive_link a:visited { color:#FFF; text-decoration:none; }
+.archive_link a:hover { text-decoration:underline; }
+
 .entry { margin:0 0 50px 0; }
 
 .to_box {
@@ -169,6 +173,7 @@ option{ margin-right:10px;}
   color:#0D5689;
 }
 .to_box .to_label { display:none; }
+.to_box a, .to_box a:visited, .to_box a:hover { color:#0D5689; text-decoration:none; }
 
 .comment {
   margin:0 0 25px 0;
@@ -184,6 +189,7 @@ option{ margin-right:10px;}
 }
 
 .comment .comment_content {
+  width:800px;
   float:left;
 }
 
