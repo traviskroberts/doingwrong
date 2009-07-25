@@ -1,5 +1,3 @@
-# Be sure to restart your server when you modify this file
-
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
@@ -7,14 +5,13 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
-
+  
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem 'mislav-will_paginate', :version => '>=2.3.8', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'RedCloth', :version => '>=4.1.9'
   config.gem 'populator', :version => '>=0.2.5'
   config.gem 'faker', :version => '>=0.3.1'
+  config.gem 'twitter'
 
   # Skip frameworks you're not going to use.
   config.frameworks -= [ :active_resource ]

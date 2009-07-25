@@ -51,12 +51,14 @@ set :repository, "git@github.com:travisr/#{application}.git"
 set :keep_releases, 5
 set :deploy_via, :remote_cache
 
-# action to symlink database file
+# action to symlink database file, twitter auth file, and restful authentication files
 namespace :deploy do
-  desc "Symlink database config file and copies restful authentication files."
+  desc "Symlink database config file, twitter auth file, and copies restful authentication files."
   task :prepare do
-    # symlink the db
+    # symlink db config file
     run "ln -nfs #{shared_path}/system/database.yml #{release_path}/config/database.yml"
+    # symlink twitter auth file
+    run "ln -nfs #{shared_path}/system/twitter.yml #{release_path}/config/twitter.yml"
     # copy restful_authentication files
     run "cp -r #{shared_path}/system/restful_authentication/* #{release_path}/vendor/plugins/restful_authentication/"
   end

@@ -1,17 +1,19 @@
 <h1>Log In</h1>
-
-<% form_tag session_path do -%>
-	<p>
-		<%= label_tag 'login' %><br />
-		<%= text_field_tag 'login', @login %>
-	</p>
-	<p>
-		<%= label_tag 'password' %><br/>
-		<%= password_field_tag 'password', nil %>
-	</p>
-	<p>
-		<%= label_tag 'remember_me', 'Remember me' %>
-		<%= check_box_tag 'remember_me', '1', @remember_me %>
-	</p>
-	<p><%= submit_tag 'Log in' %></p>
-<% end -%>
+<br />
+<div id="login_form_holder">
+  <% form_tag session_path, :id => 'login_form' do -%>
+  	<p>
+  		<%= label_tag 'login', 'Username' %><br />
+  		<%= text_field_tag 'login', @login %>
+  	</p>
+  	<p>
+  		<%= label_tag 'password' %><br/>
+  		<%= password_field_tag 'password', nil %>
+  	</p>
+  	<p>
+  		<%= check_box_tag 'remember_me', '1', @remember_me %>
+  		<%= label_tag 'remember_me', '<span class="small">Remember me</span>' %>
+  	</p>
+  	<p><%= submit_tag 'Log in' %></p>
+  <% end -%>
+</div><!-- login_form -->

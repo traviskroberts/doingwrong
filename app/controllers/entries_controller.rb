@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   before_filter :login_required, :only => [:index, :edit, :update, :destroy, :approve]
   
   def index
-    @entries = Entry.paginate(:all, :include => [:comments, :votes], :page => params[:page], :per_page => 10, :order => 'created_at DESC')
+    @entries = Entry.paginate(:all, :include => [:comments, :votes], :page => params[:page], :per_page => 10, :order => 'approved, created_at DESC')
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -103,8 +103,8 @@ class EntriesController < ApplicationController
       }
       format.js {
         render :update do |page|
-          page.alert 'Approved!'
           page.remove "#{dom_id(@entry)}_approve_link"
+          page.hide "#{dom_id(@entry)}_vote_busy"
         end
       }
     end

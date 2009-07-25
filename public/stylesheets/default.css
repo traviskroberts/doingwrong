@@ -62,18 +62,18 @@ option{ margin-right:10px;}
 }
 #submit_form .submit_btn { float:right; display:inline; margin-right:40px; }
 
-#comment_form_holder {
+#comment_form_holder, #login_form_holder {
   width:870px;
   background:url('/images/comment_box_top.png') no-repeat 0 0;
   padding:10px 0 0 0;
 }
 
-#comment_form {
+#comment_form, #login_form {
   background:url('/images/comment_box_bottom.png') no-repeat 0 100%;
   padding:10px 15px 15px 15px;
 }
 
-#comment_form label {
+#comment_form label, #login_form label {
   font-size:20px;
   font-weight:bold;
   color:#FFF;
@@ -85,7 +85,14 @@ option{ margin-right:10px;}
   color:#CCC;
 }
 
-#comment_form #comment_name, #comment_form #captcha, #comment_form #comment_email, #comment_form #comment_website {
+#login_form label .small { color:#FFF; font-weight:normal; font-size:14px; }
+
+#comment_form #comment_name,
+#comment_form #captcha,
+#comment_form #comment_email,
+#comment_form #comment_website,
+#login_form #login,
+#login_form #password {
   width:420px;
   font-size:18px;
   line-height:100%;

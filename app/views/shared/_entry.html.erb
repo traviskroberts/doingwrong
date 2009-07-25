@@ -28,7 +28,7 @@
 			<%- if !entry.approved -%>
 				<div class="button">
 					<p id="<%= dom_id(entry) %>_approve_link">
-						<%= link_to 'Approve', approve_entry_path(entry), :class => 'remote' %>
+						<%= link_to 'Approve', approve_entry_path(entry), :class => 'remote', :rel => "#{dom_id(entry)}_vote_busy" %>
 					</p>
 				</div><!-- button -->
 			<%- end -%>
@@ -49,7 +49,11 @@
 			<div class="button">
 				<p>
 					<span id="<%= dom_id(entry) %>_positive_vote_link">
-						<%= link_to_unless cookies["#{dom_id(entry)}_vote"], 'Not so bad', vote_path(:id => entry, :vote => 'positive'), :class => 'remote' %>
+						<%= link_to_unless cookies["#{dom_id(entry)}_vote"],
+						                  'Not so bad',
+						                  vote_path(:id => entry, :vote => 'positive'),
+					                    :rel => "#{dom_id(entry)}_vote_busy",
+						                  :class => 'remote' %>
 					</span>
 					<span id="<%= dom_id(entry) %>_positive_vote_count">(<%= entry.positive_vote_count %>)</span>
 				</p>
