@@ -61,7 +61,7 @@
 		
 			<div class="button">
 				<p id="comment_count">
-				  <%= link_to pluralize(entry.comments.count, 'comment'), entry_details_path(:id => entry, :slug => entry.slug) + '#comments' %>
+				  <span><%= link_to pluralize(entry.comments.count, 'comment'), entry_details_path(:id => entry, :slug => entry.slug) + '#comments' %></span>
 				</p>
 			</div><!-- button -->
 		<%- end -%>

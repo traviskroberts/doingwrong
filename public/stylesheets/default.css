@@ -42,7 +42,7 @@ option{ margin-right:10px;}
 #header img { display:block; }
 
 #submit_form_holder { background-color:#1D80C4; }
-#submit_form { width:870px; padding:10px 0 10px 30px; }
+#submit_form { width:885px; padding:10px 0 10px 30px; }
 #submit_form label { color:#FFF; font-size:24px; font-weight:bold; margin-right:5px; }
 #submit_form .to { padding:0; margin:0 0 25px 0; }
 #submit_form .to input {
@@ -147,6 +147,12 @@ option{ margin-right:10px;}
 **************************************************/
 .clear { clear:both; }
 
+.tooltip {
+  position:absolute;
+  top:0;
+  right:0;
+}
+
 .tab { padding:0 0 0 13px; background:url('/images/tab_left.gif') no-repeat 0 0; }
 .tab_inner { background:url('/images/tab_right.gif') no-repeat 100% 0; }
 
@@ -195,30 +201,11 @@ option{ margin-right:10px;}
   margin-right:10px;
 }
 
-.comment .comment_content {
-  width:800px;
-  float:left;
-}
-
-.comment_content .name {
-  padding:5px 0 0 0;
-  color:#FFF;
-  font-weight:bold;
-}
-
-.comment_content .name a, .comment_content .name a:visited {
-  color:#FFF;
-}
-
-.comment_content .date {
-  font-size:12px;
-  color:#0D5689;
-  padding:0 0 10px 0;
-}
-
-.comment_content .comment_message {
-  color:#FFF;
-}
+.comment .comment_content { width:800px; float:left; }
+.comment_content .name { padding:5px 0 0 0; color:#FFF; font-weight:bold; }
+.comment_content .name a, .comment_content .name a:visited { color:#FFF; }
+.comment_content .date { font-size:12px; color:#0D5689; padding:0 0 10px 0; }
+.comment_content .comment_message { color:#FFF; }
 
 .message_box {
   width:811px;

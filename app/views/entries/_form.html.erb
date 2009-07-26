@@ -1,10 +1,12 @@
 <%= f.error_messages %>
 
 <p class="to">
+  <%= image_tag 'question.png', :class => 'help_tip', :title => 'Please try to be sufficiently vague. No names!' %>
 	<%= f.label :to, 'To' %>
 	<%= f.text_field :to, :value => '' %>
 </p>
 <p class="message">
+  <%= image_tag 'question.png', :class => 'help_tip', :title => "Tell them what they're doing wrong!" %>
 	<%= f.label :message, "This is what you're doing wrong..." %><br />
 	<%= f.text_area :message, :size => '50x4', :value => '' %>
 </p>
