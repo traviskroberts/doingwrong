@@ -25,7 +25,9 @@ end
 
 # ActionMailer Config Settings
 ActionMailer::Base.raise_delivery_errors = false
-ActionMailer::Base.delivery_method = :sendmail
+ActionMailer::Base.smtp_settings = MAIL_SETTINGS
+
+
 
 # override terrible form error styles
 ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class=\"fieldWithErrors\">#{html_tag}</span>" }
