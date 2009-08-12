@@ -25,7 +25,11 @@ end
 
 # ActionMailer Config Settings
 ActionMailer::Base.raise_delivery_errors = false
-ActionMailer::Base.smtp_settings = MAIL_SETTINGS
+ActionMailer::Base.delivery_method = :sendmail
+ActionMailer::Base.sendmail_settings = {
+  :location       => '/usr/sbin/sendmail',
+  :arguments      => '-i -t -f info@thisiswhatyouredoingwrong.com'
+}
 
 
 

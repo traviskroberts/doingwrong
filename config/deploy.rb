@@ -59,8 +59,6 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/system/database.yml #{release_path}/config/database.yml"
     # symlink twitter auth file
     run "ln -nfs #{shared_path}/system/twitter.yml #{release_path}/config/twitter.yml"
-    # copy mail initializer file
-    run "cp #{shared_path}/system/mail.rb #{release_path}/config/initializers/mail.rb"
     # copy restful_authentication files
     run "cp -r #{shared_path}/system/restful_authentication/* #{release_path}/vendor/plugins/restful_authentication/"
   end
