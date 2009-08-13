@@ -9,7 +9,7 @@ class Tweet
   
   def post_update(entry)
     # get the url for the entry
-    entry_url = "http://#{DOMAIN_NAME}/entries/#{entry.id}/#{entry.slug}"
+    entry_url = "http://#{DOMAIN_NAME}/entry/#{entry.id}/#{entry.slug}"
     
     # shorten the url with is.gd
     short_url = Net::HTTP.get(URI.parse("http://is.gd/api.php?longurl=#{entry_url}"))
