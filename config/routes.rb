@@ -1,5 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   
+  map.resources :comments
+  map.resources :entries, :member => { :tweet => :get }
+  map.resource :session
+  map.resources :users
+  
   map.with_options :controller => 'default' do |m|
     m.home '', :action => 'index'
     m.archives 'archives/:page', :action => 'archives', :requirements => {:page => /\d+/}, :page => nil
@@ -21,11 +26,6 @@ ActionController::Routing::Routes.draw do |map|
     m.register 'register', :action => 'create'
     m.activate 'activate/:activation_code', :action => 'activate', :activation_code => nil
   end
-  
-  map.resources :comments
-  map.resources :entries, :member => { :approve => :get }
-  map.resource :session
-  map.resources :users
   
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'

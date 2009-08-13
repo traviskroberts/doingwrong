@@ -25,10 +25,10 @@
 				<p><%= link_to 'Delete', entry_path(entry), :class => 'remote-delete' %></p>
 			</div><!-- button -->
 			
-			<%- if !entry.approved -%>
+			<%- if !entry.has_tweeted -%>
 				<div class="button">
-					<p id="<%= dom_id(entry) %>_approve_link">
-						<%= link_to 'Approve', approve_entry_path(entry), :class => 'remote', :rel => "#{dom_id(entry)}_vote_busy" %>
+					<p id="<%= dom_id(entry) %>_tweet_link">
+						<%= link_to 'Tweet This!', tweet_entry_path(entry), :class => 'remote', :rel => "#{dom_id(entry)}_vote_busy" %>
 					</p>
 				</div><!-- button -->
 			<%- end -%>

@@ -32,6 +32,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.create(params[:entry])
     @entry.user = @current_user
+    @entry.approved = true
     respond_to do |format|
       if @entry.save
         SiteMailer.deliver_entry_submission(@entry)
@@ -90,10 +91,9 @@ class EntriesController < ApplicationController
     end
   end
   
-  def approve
+  def tweet
     @entry = Entry.find(params[:id])
-    @entry.update_attribute(:approved, true)
-    # auto-post this to Twitter
+    @entry.update_attribute(:has_tweeted, true)
     twitter = Tweet.new
     twitter.post_update(@entry)
     respond_to do |format|
@@ -103,7 +103,7 @@ class EntriesController < ApplicationController
       }
       format.js {
         render :update do |page|
-          page.remove "#{dom_id(@entry)}_approve_link"
+          page.remove "#{dom_id(@entry)}_tweet_link"
           page.hide "#{dom_id(@entry)}_vote_busy"
         end
       }
