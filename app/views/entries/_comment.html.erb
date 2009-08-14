@@ -1,9 +1,12 @@
-<div class="comment">
+<div class="comment" id="<%= dom_id(comment) %>">
     <%= image_tag("http://www.gravatar.com/avatar/#{comment.email}?s=50&amp;d=#{default_image_url}", :alt => '?', :class => 'gravatar') %>
     <div class="comment_content">
-        <p class="name"><%= comment.website.blank? ? h(comment.name) : link_to(h(comment.name), comment.website, :popup => true) %></p>
-        <p class="date"><%= comment.created_at.strftime("%B %d, %Y") %></p>
-        <span class="comment_message"><%= simple_format(strip_tags(comment.message)) %></span>
+      <%- if logged_in? -%>
+        <p class="delete"><%= link_to '[x]', comment_path(comment), :class => 'remote-delete' %></p>
+      <%- end -%>
+      <p class="name"><%= comment.website.blank? ? h(comment.name) : link_to(h(comment.name), comment.website, :popup => true) %></p>
+      <p class="date"><%= comment.created_at.strftime("%B %d, %Y") %></p>
+      <span class="comment_message"><%= simple_format(strip_tags(comment.message)) %></span>
     </div><!-- comment_content -->
     <div class="clear"></div>
 </div><!-- comment -->
