@@ -1,3 +1,5 @@
-<%= render :partial => 'shared/entry', :collection => @entries %>
+<div id="entry_holder">
+  <%= render :partial => 'shared/entry', :collection => @entries %>
+</div><!-- entry_holder -->
 
 <%= will_paginate @entries %>

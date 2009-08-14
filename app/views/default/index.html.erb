@@ -1,3 +1,5 @@
-<%= render :partial => 'shared/entry', :collection => @entries %>
+<div id="entry_holder">
+  <%= render :partial => 'shared/entry', :collection => @entries %>
+</div><!-- entry_holder -->
 
 <p class="archive_link"><%= link_to 'Archives &raquo;', archives_path(:page => 2) %></p>

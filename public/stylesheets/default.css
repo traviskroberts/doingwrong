@@ -319,6 +319,7 @@ option { margin-right: 10px; }
   background: url('/images/tab_left.gif') no-repeat 0 0;
 }
 .tab_inner { background: url('/images/tab_right.gif') no-repeat 100% 0; }
+.tab_inner_active { background: url('/images/tab_right_a.gif') no-repeat 100% 0; }
 .tab_holder {
   float: right;
   margin-left: 10px;

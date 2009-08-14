@@ -19,7 +19,18 @@ $(document).ready(function() {
   
   // submit form slider
 	$("#submit_link").click(function(){
+    // reset the submit form
+    $(":input", "#entry_submit_form").val("");
+    // show the submit form
 	  $("#submit_form_holder").slideToggle("slow");
+    // change the tab_inner class
+    if($("#tab_inner").hasClass('tab_inner')) {
+      $("#tab_inner").removeClass('tab_inner');
+      $("#tab_inner").addClass('tab_inner_active');
+    } else if($("#tab_inner").hasClass('tab_inner_active')) {
+      $("#tab_inner").removeClass('tab_inner_active');
+      $("#tab_inner").addClass('tab_inner');
+    }
 		return false;
 	});
 	

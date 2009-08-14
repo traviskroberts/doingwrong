@@ -1,9 +1,14 @@
 <%- if @error -%>
     $("#new_entry_errors").html("<div id='error'><p>There was an error with your submission. Please provide all fields.</p></div>");
 <%- else -%>
-    $("#new_entry_errors").html("<div id='success'><p>Your submission has been received and will be reviewed shortly.</p></div>");
+    $("#new_entry_errors").html("<div id='success'><p>Your entry has been submitted!</p></div>");
     $("#entry_to").val("");
     $("#entry_message").val("");
+    
+    if($("#entry_holder")) {
+      $("#entry_holder").prepend("<%= escape_javascript(render(:partial => 'shared/entry', :object => @entry)) %>")
+    }
+    
     window.setTimeout("$('#submit_form_holder').slideToggle('slow')", 1500);
     window.setTimeout("$('#new_entry_errors').html('')", 2000);
 <%- end -%>

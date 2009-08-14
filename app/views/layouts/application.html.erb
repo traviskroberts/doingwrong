@@ -25,7 +25,7 @@
   <div id="submit_form_holder" style="display:none;">
     <div id="submit_form">
       <div id="new_entry_errors"></div>
-      <% remote_form_for :entry, :url => entries_path, :loading => '$("#entry_submit_busy").show();' do |f| -%>
+      <% remote_form_for :entry, :url => entries_path, :html => {:id => 'entry_submit_form'}, :loading => '$("#entry_submit_busy").show();' do |f| -%>
       	<%= render :partial => 'entries/form', :locals => {:f => f} %>
       	<p class="submit_btn">
       	  <span id="entry_submit_busy" style="display:none;"><%= image_tag "comment_busy.gif", :alt => 'Please wait...' %></span>
@@ -40,7 +40,7 @@
 		
 		<div class="tab_holder">
 			<div class="tab">
-				<div class="tab_inner">
+				<div id="tab_inner" class="tab_inner">
 					<p><%= link_to 'Submit', new_entry_path, :id => 'submit_link' %></p>
 				</div><!-- tab_inner -->
 			</div><!-- tab -->
