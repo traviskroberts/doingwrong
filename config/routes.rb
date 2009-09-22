@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options :controller => 'default' do |m|
     m.home '', :action => 'index'
     m.archives 'archives/:page', :action => 'archives', :requirements => {:page => /\d+/}, :page => nil
+    m.rss_feed 'feed.:format', :action => 'feed', :format => 'rss'
   end
   
   map.entry_details 'entry/:id/:slug', :controller => 'entries', :action => 'show'

@@ -14,4 +14,11 @@ class DefaultController < ApplicationController
     end
   end
   
+  def feed
+    @entries = Entry.approved.find(:all, :order => 'created_at DESC', :limit => 10)
+    respond_to do |format|
+      format.rss # reed.rss.builder
+    end
+  end
+  
 end
