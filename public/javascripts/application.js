@@ -5,7 +5,7 @@ $(document).ready(function() {
   // set remote links to function via ajax
   $('a.remote').click(function() {
     if(this.rel) {
-      $("#" + this.rel).show();
+      $("#" + this.title).show();
     }
     $.get(this.href, null, null, "script");
     return false;
